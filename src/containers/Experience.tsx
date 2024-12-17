@@ -9,10 +9,12 @@ const Experience = () => {
   return (
     <motion.section
       id="experience"
-      className="max-w-3xl py-32 mx-auto"
+      className="max-w-3xl py-16 px-6 md:px-12 mx-auto shadow-lg rounded-lg"
       {...getSectionAnimation}
     >
-      <h2 className="heading-secondary">{experienceSection.title}</h2>
+      <h2 className="text-center text-4xl font-semibold mb-8 sm:text-3xl md:text-4xl">
+        {experienceSection.title}
+      </h2>
       <TabList experiences={experienceSection.experiences} />
     </motion.section>
   );
