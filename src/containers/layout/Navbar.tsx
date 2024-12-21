@@ -1,4 +1,5 @@
 'use client';
+
 import { navbarSection } from '@/lib/content/navbar';
 import { author } from '@/lib/content/portfolio';
 import useWindowWidth from '@/lib/hooks/use-window-width';
@@ -12,13 +13,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-/**
- * Hides the navbar while scrolling down
- * @param {Object} config
- * @param {String} [config.id=navbar] - id of navbar
- * @param {Number} [config.offset=100] - offset of navbar in px
- */
-
 const hideNavWhileScrolling = ({
   id = 'navbar',
   offset = 100,
@@ -28,13 +22,13 @@ const hideNavWhileScrolling = ({
   offset?: number;
   when: boolean;
 }) => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     const nav = document.getElementById(id);
     if (!nav) return;
 
     let prevScrollPos = window.pageYOffset;
 
-    window.onscroll = () => {
+    const handleScroll = () => {
       if (when) {
         const curScrollPos = window.pageYOffset;
         if (prevScrollPos < curScrollPos) nav.style.top = `-${offset}px`;
@@ -42,35 +36,14 @@ const hideNavWhileScrolling = ({
         prevScrollPos = curScrollPos;
       }
     };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }
-};
-
-type NavItemsProps = {
-  href?: string;
-  children: React.ReactNode;
-  index: number;
-  delay: number;
-  onClick?: (event: React.MouseEvent) => void;
-};
-
-const NavItem = ({ href, children, onClick, index, delay }: NavItemsProps) => {
-  return (
-    <motion.li
-      className="group"
-      variants={slideIn({ delay: delay + index / 10, direction: 'down' })}
-      initial="hidden"
-      animate="show"
-    >
-      <CLink
-        href={href || `/#${children}`}
-        className="block p-2 duration-500 hover:text-accent"
-        onClick={onClick}
-        withPadding
-      >
-        {children}
-      </CLink>
-    </motion.li>
-  );
 };
 
 const Navbar = () => {
@@ -82,7 +55,8 @@ const Navbar = () => {
   const ANIMATION_DELAY = windowWidth <= md ? 0 : 0.8;
 
   useEffect(() => {
-    hideNavWhileScrolling({ when: !navbarCollapsed });
+    const cleanup = hideNavWhileScrolling({ when: !navbarCollapsed });
+    return () => cleanup?.();
   }, [navbarCollapsed]);
 
   return (
@@ -112,15 +86,25 @@ const Navbar = () => {
         <nav className="capitalize absolute text-sm duration-200 md:bg-transparent z-50 w-[90%] left-1/2 -translate-x-1/2 top-full h-max rounded-xl shadow-xl p-6 bg-bg-secondary md:blocks md:static md:w-auto md:left-auto md:transform-none md:top-auto md:rounded-none md:shadow-none md:p-0 md:h-auto">
           <ul className="flex flex-col items-stretch gap-3 list-style-none lg:gap-5 xl:gap-6 md:flex-row md:items-center">
             {navLinks.map(({ name, url }, i) => (
-              <NavItem
+              <motion.li
                 key={i}
-                href={url}
-                index={i}
-                delay={ANIMATION_DELAY}
-                onClick={() => setNavbarCollapsed(false)}
+                className="group"
+                variants={slideIn({
+                  delay: ANIMATION_DELAY + i / 10,
+                  direction: 'down',
+                })}
+                initial="hidden"
+                animate="show"
               >
-                {name}
-              </NavItem>
+                <CLink
+                  href={url || `/#${name}`}
+                  className="block p-2 duration-500 hover:text-accent"
+                  onClick={() => setNavbarCollapsed(false)}
+                  withPadding
+                >
+                  {name}
+                </CLink>
+              </motion.li>
             ))}
 
             <div className="flex items-center justify-between gap-5 xl:gap-6">
