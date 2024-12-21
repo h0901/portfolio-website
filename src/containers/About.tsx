@@ -20,42 +20,48 @@ const About = () => {
 
   return domLoaded ? (
     <Wrapper id="about" {...getSectionAnimation}>
-      <h2 className="heading-secondary">{title}</h2>
+      <h2 className="heading-secondary text-3xl md:text-4xl font-semibold mb-8">
+        {title}
+      </h2>
       <main className="flex flex-col items-center gap-16 lg:items-start lg:flex-row">
-        <div className="space-y-4 lg:w-3/5">
-          <p>
-            Hi, my name is Vatsal Singh, a first-year MCA student at{' '}
+        <div className="space-y-6 lg:w-3/5">
+          <p className="text-lg leading-relaxed">
+            Hi, my name is Huma Hussain, an MS CS student{' '}
             <Link
-              href="https://bhu.ac.in/"
+              href="https://www.uic.edu/"
               target="_blank"
-              className="text-accent"
+              className="text-accent font-medium hover:underline"
             >
-              Banaras Hindu University
-            </Link>
-            .<br /> I'm an Artist as well as crazy full stack web developer who
-            wants to explore every tech stack.
-          </p>
-          <p>
-            Fast-forward to today, and I've had the privilege of working at a
-            start-up -{' '}
-            <Link
-              href="https://www.pixelwand.live/"
-              target="_blank"
-              className="text-accent"
-            >
-              Pixelwand
+              University of Illinois at Chicago
             </Link>
             .
           </p>
-          <p>
-            My main focus these days is learning mobile development and finding
-            a decent job.
+          <p className="text-lg leading-relaxed">
+            I'm a creative writer and enthusiastic full-stack web developer with
+            a passion for exploring diverse machine learning models.
+          </p>
+          <p className="text-lg leading-relaxed">
+            My journey led me to work at -{' '}
+            <Link
+              href="https://www.goldmansachs.com/"
+              target="_blank"
+              className="text-accent font-medium hover:underline"
+            >
+              Goldman Sachs
+            </Link>
+            , where I honed my skills in full-stack development, building and
+            maintaining complex web applications, and contributing to
+            data-driven solutions at scale.
+          </p>
+          <p className="text-lg leading-relaxed">
+            Right now, I'm focused on exploring new inventions in full-stack
+            development while looking for a decent job.
           </p>
 
           {list && (
             <>
-              <p>{list.title}</p>
-              <ul className="grid w-2/3 grid-cols-2 gap-1 text-sm">
+              <p className="text-lg font-medium">{list.title}</p>
+              <ul className="grid w-2/3 grid-cols-2 gap-2 mt-4 text-sm">
                 {list.items.map((item) => (
                   <ListItem key={getId()}>{item}</ListItem>
                 ))}

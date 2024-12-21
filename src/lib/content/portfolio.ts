@@ -7,33 +7,29 @@
 import { StringKeyValueType } from '../types';
 
 export const socialLinks: StringKeyValueType = {
-  facebook: 'https://www.facebook.com/vatsalsinghkv',
-  instagram: 'https://www.instagram.com/vatsalsinghkv',
-  twitter: 'https://twitter.com/vatsalsinghkv',
-  github: 'https://github.com/vatsalsinghkv',
-  linkedin: 'https://www.linkedin.com/in/vatsalsinghkv/',
+  leetcode: 'https://leetcode.com/u/humahussain/',
+  github: 'https://github.com/h0901',
+  linkedin: 'https://www.linkedin.com/in/hhussain0901/',
 };
 
 export const author = {
-  name: 'Vatsal Singh',
-  email: 'vatsalsinghkv@gmail.com',
+  name: 'Huma Hussain',
+  email: 'hhuss@uic.edu',
 };
 
 export const seoData = {
-  title: 'Vatsal Singh | Front-End Developer',
+  title: 'Huma Hussain | Software Engineer',
   description:
-    'Vatsal Singh is a front-end developer who specializes in building (and occasionally designing) exceptional visual interfaces.',
+    'Huma Hussain is a full-stack developer with experience in building scalable applications and expertise in machine learning.',
   author: author.name,
   image:
-    'https://user-images.githubusercontent.com/68834718/217467445-0b0d2d63-f8ad-4702-8474-814eb2cbb3be.png',
+    'https://static.vecteezy.com/system/resources/previews/023/579/761/non_2x/programming-and-engineering-development-tiny-girl-programmer-or-developer-create-code-programming-language-php-html-css-js-modern-flat-cartoon-style-illustration-on-white-background-vector.jpg',
   url: 'https://vatsalsinghkv.vercel.app/',
   keywords: [
-    'Vatsal',
-    'Vatsal Singh',
-    '@vatsalsinghkv',
-    'vatsalsinghkv',
+    'Huma',
+    'Huma Hussain',
     'Portfolio',
-    'Vatsal Portfolio ',
-    'Vatsal Singh Portfolio',
+    'Huma Portfolio ',
+    'Huma Hussain Portfolio',
   ],
 };
