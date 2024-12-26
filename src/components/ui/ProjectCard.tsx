@@ -2,7 +2,6 @@
 import { ProjectType } from '@/lib/types';
 import { blurImageURL } from '@/lib/utils/config';
 
-import { Icon } from '@iconify/react';
 import { motion, MotionProps } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -47,22 +46,6 @@ const ProjectCard = ({
         <div className="p-4 py-3 space-y-1">
           <div className="flex items-center justify-between">
             <p className="font-mono text-xs capitalize">{tags.join(' | ')}</p>
-            <div className="flex items-center space-x-1.5">
-              <a
-                href={repo}
-                className="block duration-200 hover:text-accent"
-                target="_blank"
-              >
-                <Icon icon="tabler:brand-github" width={20} height={20} />
-              </a>
-              <a
-                href={url}
-                className="block duration-200 hover:text-accent"
-                target="_blank"
-              >
-                <Icon icon="ci:external-link" width={22} height={22} />
-              </a>
-            </div>
           </div>
           <h4 className="flex justify-between font-medium capitalize duration-200 group-hover:text-accent">
             <span>{name}</span>
