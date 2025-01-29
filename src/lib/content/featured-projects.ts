@@ -79,6 +79,24 @@ const featuredProjectsSection: FeaturedProjectsSectionType = {
         'TensorFlow',
       ],
     },
+    {
+      id: getId(),
+      name: 'Healthspace: Healthcare Data Management',
+      description:
+        'A healthcare data management system enabling doctor-patient interactions, appointment management, and efficient data handling using Java, JDBC, MySQL, and NetBeans.',
+      tasks:
+        'Designed an RDBMS schema and implemented MySQL queries to efficiently store, retrieve, and manipulate healthcare data. Led a team of 2 to develop key functionalities, including appointment booking and cancellations, to streamline doctor-patient interactions using Java, JDBC, and the NetBeans Platform.',
+      url: 'https://github.com/h0901/healthspace',
+      img: '/project-pics/healthspace.png',
+      tags: [
+        'Java',
+        'JDBC',
+        'MySQL',
+        'NetBeans Platform',
+        'RDBMS',
+        'Healthcare Data Management',
+      ],
+    },
   ],
 };
 
